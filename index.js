@@ -6,9 +6,13 @@ const express = require ('express');
 const server = express();
 let cors = require('cors')
 const path = require('path'); 
-const {DECIDIR_PRIVATE_KEY, DECIDIR_PUBLIC_KEY} = process.env;
-// let sdk = new sdkModulo.sdk('developer', DECIDIR_PUBLIC_KEY, DECIDIR_PRIVATE_KEY);
-const sdkModulo = require('./src/lib/sdk');
+
+//   initializeDb usar db
+// const { initializeDb } = require('./src/db/index');
+// initializeDb();
+//   connection();
+//   models();
+
 
 server.use(cors());
 server.use(express.json());

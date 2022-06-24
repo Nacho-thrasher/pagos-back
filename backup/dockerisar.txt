@@ -1,0 +1,1 @@
+docker run --rm -it --name prueba -v C:\Users\jiburgos\Downloads\pagosNode\ucsmicrodecidir:/app -p 8880:8080 -e "PORT=8080"  -e "DB_USUARIO=APP_GESTION" -e "DB_CLAVE=APP_GESTION" -e "RUN_WITH=nodemon_legacy" express-oracle-api:v2
