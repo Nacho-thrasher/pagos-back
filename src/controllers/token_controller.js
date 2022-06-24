@@ -1,9 +1,9 @@
 var Client = require('node-rest-client').Client;
 const TokenDataModulo = require('../lib/token_data');
-const { DECIDIR_PRIVATE_KEY, DECIDIR_PUBLIC_KEY, DECIDIR_URL } = process.env;
+const { DECIDIR_URL } = process.env;
 const object = require('../helpers/objectToken');
 
-const createTokenController = async(req, res) => {
+const create_token = async(req, res) => {
     try {
         //? pasar a middleware para validar el request
         const args = object(req.body);
@@ -24,5 +24,5 @@ const createTokenController = async(req, res) => {
 }
 
 module.exports = {
-    createTokenController
+    create_token
 }

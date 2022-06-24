@@ -29,7 +29,6 @@ const get_boleta = (req, res) => {
         });
         //? buscar metodos de oracledb 
         //? conexion execute query
-        
     } catch (error) {
         console.log(error);
         res.status(500).json({

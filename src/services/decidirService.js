@@ -1,4 +1,4 @@
-
+//? ejecutar pago no se realizara aqui 
 const ejecutarPago = (payment) => {
     return new Promise((resolve, reject) => {
         const decidir = require('decidir');

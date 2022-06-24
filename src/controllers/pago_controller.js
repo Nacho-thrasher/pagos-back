@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../db/config/config');
 
-const getStatusPago = (req, res) => {
+const get_status_pago = (req, res) => {
     let { nroTran } = req.query;
     try {
         //? resolve nro transac float
@@ -42,5 +42,5 @@ const getStatusPago = (req, res) => {
 }
 
 module.exports = {
-    getStatusPago
+    get_status_pago
 }
