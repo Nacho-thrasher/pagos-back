@@ -1,5 +1,5 @@
-
-export const object = (obj) => {
+const { DECIDIR_PUBLIC_KEY }  = process.env;
+const object = (obj) => {
     return {	
         "card_number":  obj.card_number,
         "card_expiration_month": obj.card_expiration_month,
@@ -12,4 +12,7 @@ export const object = (obj) => {
         'Content-Type': "application/json",
         'Cache-Control': "no-cache"        
     };
+}
+module.exports = {
+    object
 }
