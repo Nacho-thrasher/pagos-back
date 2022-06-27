@@ -1,4 +1,4 @@
-var Promise = require('promise');
+// var Promise = require('promise');
 
 module.exports = {
     getAllPayments: function(sdk, args) {
