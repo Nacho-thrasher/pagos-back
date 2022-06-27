@@ -1,3 +1,4 @@
+//? naming, joi, validaciones
 require('dotenv').config(); //? for use enviroment variables
 const morgan = require ('morgan');
 const routes = require ('./src/routes/index.js');
