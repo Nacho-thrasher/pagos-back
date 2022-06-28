@@ -3,6 +3,7 @@ const { getCondicionAlumno } = require('../services/condicionAlumno');
 const { medioPagoById } = require('../services/medioPago');
 const { obtenerPago } = require('../services/decidir');
 const { getCuotaByID } = require('../services/cuota');
+// import ITransaction from '../db/models/ITransaction';
 
 const getStatusPago = async(req, res) => {
     let { nroTran } = req.query;
@@ -35,6 +36,8 @@ const ejecutarPago = async(req, res) => {
     const { nroTran, appOrigen } = req.query;
     //? ges decidir log nrotran, apporigen, body
     try {
+        // metodos movim, condicion alumno, medio pago, cuota, amount 
+        // pasan a validaciones en middlewares 
         const movim = getByNroTran(nroTran);
         if (!movim) {
             //# editar GES DECIDIR LOG
@@ -53,8 +56,6 @@ const ejecutarPago = async(req, res) => {
             return res.status(404).json('No existe la cuota correspondiente al ID ingresado.');
         }
         // const floatAmount = 
-        
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -62,7 +63,6 @@ const ejecutarPago = async(req, res) => {
         });
     }
 }
-
 module.exports = {
     getStatusPago,
     ejecutarPago

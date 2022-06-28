@@ -2,6 +2,7 @@ const Client           = require('node-rest-client').Client;
 const TokenDataModulo  = require('../lib/token_data');
 const { object }       = require('../helpers/objectToken');
 const { DECIDIR_URL }  = process.env;
+const { IToken } = require('../db/models/IToken');
 
 const createToken = async(req, res) => {
     try {
@@ -11,7 +12,12 @@ const createToken = async(req, res) => {
         args = tokenData.getJSON();
         let client = new Client();
         client.post(DECIDIR_URL + "tokens", args, function(data, response) {
-            res.status(200).send(data);
+            //? cargar data en modelo de datos para el token
+            let token = new IToken(data);
+            res.status(200).json({
+                message: 'Token creado',
+                data: token
+            });
         })
 
     } catch (error) {

@@ -1,1 +1,1 @@
-//? entidades de la base de datos
+//? entidad de datos para oracle 
