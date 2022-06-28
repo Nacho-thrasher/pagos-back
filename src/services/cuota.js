@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../db/config/config');
 
-const getCuotaByID = (idCuota, condicionAlumno) => {
+const getCuotaByID = async(idCuota, condicionAlumno) => {
     try {
         const connection = await oracledb.getConnection(dbConfig.development)
         connection.then(async (connection) => {
@@ -20,7 +20,6 @@ const getCuotaByID = (idCuota, condicionAlumno) => {
             console.log(err);
             return null;
         });
-
 
     } catch (error) {
         console.log(error);

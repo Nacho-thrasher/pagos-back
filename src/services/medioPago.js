@@ -1,7 +1,7 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../db/config/config');
 
-const getById = async (medioPagoId, condicionAlumno) => {
+const medioPagoById = async (medioPagoId, condicionAlumno) => {
     console.log(condicionAlumno);
     const fechaActual = new Date();
     //? consultar id medio pago en tabla medio_pago
@@ -32,5 +32,5 @@ const getById = async (medioPagoId, condicionAlumno) => {
 }
 
 module.exports = {
-    getById
+    medioPagoById
 }
