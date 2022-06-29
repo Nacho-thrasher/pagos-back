@@ -1,19 +1,16 @@
 // const { nroTran, appOrigen } = req.query || req.body;
 const { getByNroTran } = require('../services/movimiento');
-const validarMovims = (req, res, next) => {
+
+const validarMovims = async(req, res, next) => {
     const { nroTran } = req.query;
     try {
-        if (!nroTran) {
-            return res.status(400).json({
-                message: 'El parámetro nroTran no puede ser nulo o vacío.'
-            });
-        }
-        const movim = getByNroTran(nroTran);
-        if (!movim) {
+        const movim = await getByNroTran(nroTran);
+        if (!movim || movim == undefined) {
             return res.status(404).json({
                 message: 'No existe la boleta correspondiente al número de transacción ingresado.' 
             });
         }
+        req.movim = movim;
         next();       
 
     } catch (error) {

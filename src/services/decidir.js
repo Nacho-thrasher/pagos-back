@@ -23,7 +23,7 @@ const ejecutarPago = (payment) => {
     });
 }
 
-const obtenerPago = async(siteTransactionId) => {
+const getPagoDecidir = async(siteTransactionId) => {
     if (siteTransactionId == null || siteTransactionId.length == 0) {
         return null;     
     }
@@ -50,5 +50,40 @@ const obtenerPago = async(siteTransactionId) => {
         return null;
     }
 }
+const postPagoDecidir = async(paymentRequest, movim, amount, cuotas, siteId) => {
+    if (paymentRequest == null || movim == null) return null;     
+    //? con los datos del usuario se genero el pago
+    console.log('llego a postPagoDecidir'); //? token es transaction_id
+    try {
+        const args = {
+            "establishment_name": "UCASAL",
+            "token": paymentRequest.token,
+            "site_transaction_id": movim.nro_transac,
+            "payment_method_id": paymentRequest.paymentMethodId,
+            "site_id": siteId, 
+            "bin": paymentRequest.bin,
+            "amount": amount,
+            "currency": "ARS",
+            "installments": cuotas,
+            "payment_type": "single",
+            "sub_payments": [] //? consultar aqui
+        }
+        const payment = await axios.post(`${DECIDIR_URL}payments`,
+            args, 
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': DECIDIR_PRIVATE_KEY,
+                    'Cache-Control': 'no-cache'
+                }  
+            }
+        )
+        return payment.data;
 
-module.exports = {  obtenerPago };
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+module.exports = { getPagoDecidir, postPagoDecidir };

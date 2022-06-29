@@ -14,8 +14,7 @@ const getBoleta = (req, res) => {
             message: 'Boleta obtenida',
             data: movim
         });
-        //? buscar metodos de oracledb 
-        //? conexion execute query
+        
     } catch (error) {
         console.log(error);
         res.status(500).json({

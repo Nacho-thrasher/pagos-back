@@ -1,9 +1,7 @@
 const oracledb = require('oracledb');
 const dbConfig = require('../db/config/config');
 
-const medioPagoById = async (medioPagoId, condicionAlumno) => {
-    console.log(condicionAlumno);
-    const fechaActual = new Date();
+const medioPagoById = async (medioPagoId) => {
     //? consultar id medio pago en tabla medio_pago
     try {
         const connection = await oracledb.getConnection(dbConfig.development)
